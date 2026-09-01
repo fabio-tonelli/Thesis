@@ -1,0 +1,1 @@
+Nota sui risultati: nel grafico 110 delle direzioni speciali in realtà L non è: T1<L<T2 è esattamente uguale a T2 è che non ho coperto quel caso con gli if
