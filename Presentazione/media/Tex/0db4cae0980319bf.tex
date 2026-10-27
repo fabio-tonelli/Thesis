@@ -1,0 +1,27 @@
+\documentclass[preview]{standalone}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{fontspec}
+\setmainfont{Liberation Sans}
+\setsansfont{Liberation Sans}
+\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+\begin{align*}
+\text{SC: } &
+            \begin{cases}
+            C_{11}=\frac{1}{r_0^3}\left[72 \epsilon + 4(\gamma_{1}+\gamma_{2}+2\gamma_{3}+\gamma_{4}+\gamma_{5})\right] \\[0.4cm]
+            C_{12}=-\frac{2}{r_{0}^3}(\gamma_{1}+\gamma_{2}+2\gamma_{3}+\gamma_{4}+\gamma_{5}) \\[0.4cm]
+            C_{44}=\frac{2}{r_{0}^3}\left(\gamma_{1}+2\gamma_{2}+6\gamma_{3}+2\gamma_{4}+\gamma_{5}\right)
+            \end{cases}
+            \\[1cm]
+            \text{FCC: } &
+            \begin{cases}
+            C_{11}=\frac{\sqrt{2}}{r_{0}^3}\left[72 \epsilon + 4(\gamma_{2}+2\gamma_{3}+\gamma_{4})\right] \\[0.4cm]
+            C_{12}=\frac{\sqrt{2}}{r_{0}^3}\left[36 \epsilon - 2(\gamma_{2}+2\gamma_{3}+\gamma_{4})\right] \\[0.4cm]
+            C_{44}=\frac{4\sqrt2}{r_{0}^3}\left(9\epsilon +\gamma_{2}+\gamma_{4}\right)
+            \end{cases}
+\end{align*}
+\end{document}

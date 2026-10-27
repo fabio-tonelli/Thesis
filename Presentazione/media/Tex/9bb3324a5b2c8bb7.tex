@@ -1,0 +1,20 @@
+\documentclass[preview]{standalone}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{fontspec}
+\setmainfont{Liberation Sans}
+\setsansfont{Liberation Sans}
+\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+\begin{align*}
+\Gamma(\vec{n}) =
+            \begin{bmatrix}
+            C_{11}n_x^2 + C_{44}(n_y^2 + n_z^2) & (C_{12}+C_{44})n_x n_y & (C_{12}+C_{44})n_x n_z \\[0.3cm]
+            (C_{12}+C_{44})n_x n_y & C_{11}n_y^2 + C_{44}(n_x^2 + n_z^2) & (C_{12}+C_{44})n_y n_z \\[0.3cm]
+            (C_{12}+C_{44})n_x n_z & (C_{12}+C_{44})n_y n_z & C_{11}n_z^2 + C_{44}(n_x^2 + n_y^2)
+            \end{bmatrix}
+\end{align*}
+\end{document}

@@ -1,0 +1,20 @@
+\documentclass[preview]{standalone}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{fontspec}
+\setmainfont{Liberation Sans}
+\setsansfont{Liberation Sans}
+\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+\begin{align*}
+U_{TB} &= \sum_{\substack{i,j,l \\ i<j<l}}
+            \gamma(\theta_{0ijl})
+            \left[1-\cos(\theta_{ijl}-\theta_{0ijl})\right] \\
+            &\equiv \sum_{\substack{i,j,l \\ i<j<l}}
+            \gamma_{w}
+            \left[1-\cos(\theta_{ijl}-\theta_{0ijl})\right]
+\end{align*}
+\end{document}
