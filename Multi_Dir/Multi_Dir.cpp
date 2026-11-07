@@ -5,7 +5,7 @@
 #include <string>    
 
 
-#include "Multiq_2_3.h"
+#include "Multi_Dir.h"
 
 using namespace std;
 
@@ -13,39 +13,33 @@ using namespace arma;
 
 int main(int argc , char* argv[]) {
 
-  //controllo numero argomenti
+  //checking the number of the arguments
   if (argc != 2) {
   cout << "Argument required: SC or FCC" << endl;
   return -1;
 }
 string lattice = argv[1];
-//file per diagram classico
+
 string filename;
-//file per diagram sferico
-string filename_sphere;
 
 //string filename assignment
-if (lattice == "SC"){
-       filename = "results_SC.txt";
+if (lattice == "SC" || lattice == "FCC"){
+       filename = "2D_Results_"+ lattice +".txt";
        
-}
-else if (lattice == "FCC"){
- filename = "results_FCC.txt";
- 
 }
 else {
   cout << "The argument has to be SC or FCC" << endl;
   return -2;
 }
 
-string filepath = "/home/tonelli/Tesi/Multiq_standard/Results/2D_Results/";
+string filepath = "/home/tonelli/Tesi/Multi_Dir/Results/2D_Results/";
  //removes the old file filename
   if (remove((filepath + filename).c_str()) == -1) {
     perror("Could not remove the results file for the selected lattice");
 
   }
 
-ofstream outfile("/home/tonelli/Tesi/Multiq_standard/Results/2D_Results/" + filename);
+ofstream outfile("/home/tonelli/Tesi/Multi_Dir/Results/2D_Results/" + filename);
 if (!outfile.is_open()) {
   cout << "Could not open output file" << endl;
   return 1;
@@ -83,7 +77,7 @@ else{
   vector<array<double, 3>> dirs;
  
 
-  // random directions on the octant of the sphere
+ 
 
   //definition of the special_directions bool
   bool special_directions = false;

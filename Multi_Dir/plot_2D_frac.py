@@ -1,4 +1,4 @@
-#-----This script takes the files results_SC.txt or results_FCC.txt  as input and it creates the 'fraction of directions' diagrams-----
+#-----This script takes the files 2D_Results_SC.txt or 2D_Results_FCC.txt  as input and it creates the 'fraction of directions' diagrams-----
 
 import argparse
 import numpy as np
@@ -9,7 +9,7 @@ from matplotlib import cm
 parser = argparse.ArgumentParser(description="Mappe a colori delle frazioni di punti q per reticolo SC o FCC")
 parser.add_argument("lattice", choices=["SC", "FCC"], help="reticolo da usare")
 parser.add_argument("--input", default=None,
-                    help="file csv di input (default: results_<lattice>.txt)")
+                    help="file csv di input (default: 2D_Results_<lattice>.txt)")
 args = parser.parse_args()
 
 LATTICE = args.lattice
@@ -17,14 +17,14 @@ LATTICE = args.lattice
 # --- Lattice configurations -----------------------------
 CONFIG = {
     "SC": {
-        "input":  "/home/tonelli/Tesi/Multiq_standard/Results/2D_Results/results_SC.txt",
-        "output": "color_map_gamma_SC_TL_shared.png",
+        "input":  "/home/tonelli/Tesi/Multi_Dir/Results/2D_Results/2D_Results_SC.txt",
+        "output": "Frac_Dir_Plot_SC.png",
         "xlabel": r'$(\gamma_1 + \gamma_5)/2$',
         "vmin": 0, "vmax": 0.15,
     },
     "FCC": {
-        "input":  "/home/tonelli/Tesi/Multiq_standard/Results/2D_Results/results_FCC.txt",
-        "output": "color_map_gamma_FCC_TL_shared.png",
+        "input":  "/home/tonelli/Tesi/Multi_Dir/Results/2D_Results/2D_Results_FCC.txt",
+        "output": "Frac_Dir_Plot_FCC.png",
         "xlabel": r'$(\gamma_2+\gamma_4)/2$',
         "vmin": 0, "vmax": 0.6,
     },
@@ -71,5 +71,5 @@ axs[0].set_ylabel(r'$\gamma_3$', fontsize=14)
 cbar = fig.colorbar(im, ax=axs, shrink=0.9)
 cbar.set_label('fraction of directions', rotation=90, labelpad=20)
 
-fig.savefig(f"/home/tonelli/Tesi/Multiq_standard/Plots/Frac_Dir_Plots/{cfg["output"]}", dpi=150, bbox_inches='tight')
+fig.savefig(f"/home/tonelli/Tesi/Multi_Dir/Plots/Frac_Dir_Plots/{cfg["output"]}", dpi=150, bbox_inches='tight')
 plt.show()

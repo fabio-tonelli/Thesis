@@ -9,12 +9,12 @@ import argparse
 parser = argparse.ArgumentParser(description="Frac_Max for SC or FCC lattice")
 parser.add_argument("lattice", choices=["SC", "FCC"], help="to be used lattice")
 parser.add_argument("--input", default=None,
-                    help=" input file (default: results_<lattice>.txt)")
+                    help=" input file (default: 2D_Results_<lattice>.txt)")
 args = parser.parse_args()
 
 LATTICE = args.lattice
 
-INPUT_FILE = f"/home/tonelli/Tesi/Multiq_standard/Results/2D_Results/results_{LATTICE}.txt"
+INPUT_FILE = f"/home/tonelli/Tesi/Multi_Dir/Results/2D_Results/2D_Results_{LATTICE}.txt"
 COL = 3   # fourth column (index from 0)
 
 try:

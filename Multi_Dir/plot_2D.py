@@ -1,4 +1,4 @@
-#-----This script takes the files results_SC.txt or results_FCC.txt  as input and it creates the phase diagrams-----
+#-----This script takes the files 2D_Results_SC.txt or 2D_Results_FCC.txt  as input and it creates the phase diagrams-----
 
 import argparse
 import sys
@@ -11,7 +11,7 @@ from matplotlib.colors import ListedColormap, BoundaryNorm
 parser = argparse.ArgumentParser(description="Map (gamma_x, gamma3) for SC or FCC lattice")
 parser.add_argument("lattice", choices=["SC", "FCC"], help="to be used lattice")
 parser.add_argument("--input", default=None,
-                    help=" input file (default: results_<lattice>.txt)")
+                    help=" input file (default: 2D_Results_<lattice>.txt)")
 args = parser.parse_args()
 
 LATTICE = args.lattice
@@ -19,13 +19,13 @@ LATTICE = args.lattice
 # --- Lattice configurations -----------------------------
 CONFIG = {
     "SC": {
-        "input":  "/home/tonelli/Tesi/Multiq_standard/Results/2D_Results/results_SC.txt",
-        "output": "map_gamma_SC_TL.png",
+        "input":  "/home/tonelli/Tesi/Multi_Dir/Results/2D_Results/2D_Results_SC.txt",
+        "output": "Color_Map_Plot_SC.png",
         "xlabel": r"$(\gamma_1 + \gamma_5)/2$",
     },
     "FCC": {
-        "input":  "/home/tonelli/Tesi/Multiq_standard/Results/2D_Results/results_FCC.txt",
-        "output": "map_gamma_FCC_TL.png",
+        "input":  "/home/tonelli/Tesi/Multi_Dir/Results/2D_Results/2D_Results_FCC.txt",
+        "output": "Color_Map_Plot_FCC.png",
         "xlabel": r"$(\gamma_2 + \gamma_4)/2$",
     },
 }
@@ -148,7 +148,7 @@ if c is not None:
 ax.text(0.1, 1.85, LATTICE, fontsize=15, bbox=box_style)
 
 plt.tight_layout()
-plt.savefig(f"/home/tonelli/Tesi/Multiq_standard/Plots/Color_Map_Plots/{cfg["output"]}", dpi=150, bbox_inches='tight')
+plt.savefig(f"/home/tonelli/Tesi/Multi_Dir/Plots/Color_Map_Plots/{cfg["output"]}", dpi=150, bbox_inches='tight')
 plt.show()
 
 

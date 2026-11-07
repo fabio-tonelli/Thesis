@@ -1,5 +1,5 @@
-#ifndef MULTIQ_2_3_H
-#define MULTIQ_2_3_H
+#ifndef MULTI_DIR_H
+#define MULTI_DIR_H
 
 #include <array>      
 #include <vector>     

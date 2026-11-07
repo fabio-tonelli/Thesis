@@ -2,9 +2,9 @@ CXX      := g++
 CXXFLAGS := -O2 -std=c++17 -Wall
 LDLIBS   := -larmadillo
 
-HDR  := Multiq_2_3.h
-EXE1 := Multiq_2_3
-EXE2 := Multiq_Sphere
+HDR  := Multi_Dir.h
+EXE1 := Multi_Dir
+EXE2 := Multi_Dir_Sphere
 
 all: $(EXE1) $(EXE2)
 

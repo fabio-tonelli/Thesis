@@ -4,7 +4,7 @@
 #include <string>    
 #include <filesystem>
 
-#include "Multiq_2_3.h"
+#include "Multi_Dir.h"
 
 using namespace std;
 
@@ -20,30 +20,27 @@ void delete_dir_content(const filesystem::path& dir_path) {
 
 int main(int argc , char* argv[]) {
 
-    //controllo numero argomenti
+  //checking the number of the arguments
   if (argc != 2) {
   cout << "Argument required: SC or FCC" << endl;
   return -1;
 }
 string lattice = argv[1];
 
-//file per diagram sferico
+//file for spherical diagram
 string filename;
-if (lattice == "SC"){
-       filename = "results_SC_sphere.txt";
+if (lattice == "SC" || lattice == "FCC"){
+       filename = "Sphere_Results_"+ lattice +".txt";
        
 }
-else if (lattice == "FCC"){
- filename = "results_FCC_sphere.txt";
- 
-}
+
 else {
-  cout << "Scegliere o FCC o SC" << endl;
+  cout << "The argument has to be SC or FCC" << endl;
   return -2;
 }
 
 // removes the old files
-filesystem::path P ="/home/tonelli/Tesi/Multiq_standard/Results/Sphere_Results/Sphere_Results_"+ lattice;
+filesystem::path P ="/home/tonelli/Tesi/Multi_Dir/Results/Sphere_Results/Sphere_Results_"+ lattice;
 //delete function
 delete_dir_content(P);
  
@@ -56,14 +53,14 @@ ofstream outfile[N_gamma3];
 for (int i = 0; i < N_gamma3; i++) {
   
     string nome_i = to_string(i) + "_" + filename;   // 0_results_SC_sphere.txt, ...
-    outfile[i].open("/home/tonelli/Tesi/Multiq_standard/Results/Sphere_Results/Sphere_Results_"+ lattice + "/" + nome_i);
+    outfile[i].open("/home/tonelli/Tesi/Multi_Dir/Results/Sphere_Results/Sphere_Results_"+ lattice + "/" + nome_i);
     if (!outfile[i].is_open()) {
         cout << "Could not open file: " << nome_i << endl;
         return 1;
     }
 }
 
- // ---------------- Parametri fisici ----------------
+ // ---------------- Physical parameters ----------------
   double epsilon = 1 / 72.;
   double gamma1=0 , gamma2 = 0, gamma4 = 0, gamma5 = 0;
   double r0 = 1.;
@@ -82,17 +79,17 @@ for (int i = 0; i < N_gamma3; i++) {
   uint32_t seed = 12345;
  
 
-  // numero di direzioni casuali (oltre alle 3 speciali)
+  // Number of directions
   long unsigned int N_vectors = 5000;
 
   
       
 
-  // ---------------- Direzioni: generate UNA sola volta ----------------
+  // ---------------- Vector of the directions (generated once) ----------------
   vector<array<double, 3>> dirs;
  
 
-  // direzioni casuali nell'ottante positivo (rejection sulla palla)
+  // random directions on the octant of the sphere
   //definition of the special_directions bool
   bool special_directions = false;
   make_dirs(dirs,N_vectors,seed,special_directions);
@@ -100,13 +97,14 @@ for (int i = 0; i < N_gamma3; i++) {
 //ciclo sui valori di gamma3
 for(int i=0 ; i<N_gamma3 ; i++){
 
-  //contatori
+  // counters
       int count =0;
       int count1 =0;
       int countdeg=0;
       int countdeg1=0;
 
-  //valori delle C
+
+//Derived expressions
  
 if(lattice == "SC"){
       gamma1=gammax;
@@ -126,8 +124,9 @@ if(lattice == "SC"){
        C44 = 4. * sqrt(2.) / r03 * (9. * epsilon + gamma2 + gamma4);
   }
 
+  //creating an object of the Diagonalize class
    Diagonalize D(C11,C12,C44);
-      
+   //Flag assignment   
    Flag_Assignment_Sphere(outfile[i], count, count1,
                       countdeg,  countdeg1, D,dirs); 
 
